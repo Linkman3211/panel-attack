@@ -2,6 +2,7 @@ local buttonManager = require("ui.buttonManager")
 local sliderManager = require("ui.sliderManager")
 local inputFieldManager = require("ui.inputFieldManager")
 local inputManager = require("inputManager")
+local joystickDetection = require("joystickDetection")
 local logger = require("logger")
 local consts = require("consts")
 
@@ -341,4 +342,12 @@ end
 
 function love.keyreleased(key, unicode)
   inputManager:keyReleased(key, unicode)
+end
+
+function love.joystickadded(joystick)
+
+  if not GAME.match then
+    joystickDetection.warpConfigMenu()
+  end
+
 end
